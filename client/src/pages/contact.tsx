@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { useLocation } from "wouter";
 
 import {
   Form,
@@ -21,7 +22,8 @@ import { insertVolunteerSchema, type InsertVolunteer } from "@shared/schema";
 
 export default function Contact() {
   const { toast } = useToast();
-  
+  const [, setLocation] = useLocation();
+
   const form = useForm<InsertVolunteer>({
     resolver: zodResolver(insertVolunteerSchema),
     defaultValues: {
@@ -43,6 +45,7 @@ export default function Contact() {
         description: "Thank you for your interest in volunteering. We'll be in touch soon."
       });
       form.reset();
+      setLocation("/thank-you");
     },
     onError: (error) => {
       toast({
