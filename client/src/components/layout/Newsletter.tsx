@@ -22,13 +22,19 @@ export default function Newsletter() {
     resolver: zodResolver(insertNewsletterSchema),
     defaultValues: {
       email: "",
-      name: ""
+      name: null // Explicitly set to null for optional field
     }
   });
 
   const mutation = useMutation({
     mutationFn: async (data: InsertNewsletter) => {
-      await apiRequest("POST", "/api/newsletter/subscribe", data);
+      try {
+        await apiRequest("POST", "/api/newsletter/subscribe", data);
+      } catch (error: any) {
+        // Extract the error message from the response if available
+        const message = error.response?.data?.message || error.message;
+        throw new Error(message);
+      }
     },
     onSuccess: () => {
       toast({
@@ -37,7 +43,7 @@ export default function Newsletter() {
       });
       form.reset();
     },
-    onError: (error) => {
+    onError: (error: Error) => {
       toast({
         title: "Error",
         description: error.message,
@@ -53,7 +59,17 @@ export default function Newsletter() {
         Stay updated with our latest news, programs, and community initiatives.
       </p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))} className="space-y-4">
+        <form 
+          onSubmit={form.handleSubmit((data) => {
+            // Ensure we're sending valid data
+            const payload = {
+              email: data.email,
+              name: data.name || null // Convert empty string to null
+            };
+            mutation.mutate(payload);
+          })} 
+          className="space-y-4"
+        >
           <FormField
             control={form.control}
             name="email"
@@ -79,6 +95,7 @@ export default function Newsletter() {
                   <Input 
                     placeholder="Your name (optional)" 
                     {...field}
+                    onChange={(e) => field.onChange(e.target.value || null)} // Convert empty string to null
                   />
                 </FormControl>
                 <FormMessage />

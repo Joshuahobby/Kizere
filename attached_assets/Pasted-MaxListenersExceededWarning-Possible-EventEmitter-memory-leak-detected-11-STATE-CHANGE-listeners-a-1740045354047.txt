@@ -1,0 +1,186 @@
+MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 STATE_CHANGE listeners added. Use emitter.setMaxListeners() to increase limit
+    at f (https://cdn.replit.com/_next/static/chunks/8707-c1c55bc62432e150.js:1:79238)
+    at c.addListener (https://cdn.replit.com/_next/static/chunks/8707-c1c55bc62432e150.js:1:81772)
+    at Object.onStateChanged (https://cdn.replit.com/_next/static/chunks/8753-12c960a2aa07e200.js:1:515597)
+    at https://cdn.replit.com/_next/static/chunks/8753-12c960a2aa07e200.js:1:2612442
+    at oO (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:153605)
+    at uB (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:182655)
+    at u_ (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:165471)
+    at r6 (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:114363)
+    at https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:181101
+    at uO (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:181107)
+    at uS (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:164474)
+    at C (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:207254)
+    at MessagePort.z (https://cdn.replit.com/_next/static/chunks/framework-f608d3098704f6c5.js:1:207784)
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this warning
+stallwart.build.js:1 stallwart: failed ping 3
+stallwart.build.js:1 stallwart: failed ping 1
+stallwart.build.js:1 stallwart: failed ping 2
+stallwart.build.js:1 stallwart: failed ping 3
+stallwart.build.js:1 stallwart: failed ping 1
+stallwart.build.js:1 stallwart: failed ping 2
+stallwart.build.js:1 stallwart: failed ping 3
+stallwart.build.js:1 stallwart: failed ping 4
+stallwart.build.js:1 stallwart: failed ping 5
+stallwart.build.js:1 stallwart: session stalled
+m.stripe.network/inn…n=6&preview=false:1 Uncaught (in promise) undefinedUnderstand this error
+13Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this error
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'battery'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'layout-animations'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'navigation-override'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'oversized-images'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'publickey-credentials'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'speaker-selection'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'unoptimized-images'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Unrecognized feature: 'unsized-media'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+framework-f608d3098704f6c5.js:1 Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-f608d3098704f6c5.js:1Understand this warning
+2_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//contact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+2_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//contact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//thank-you' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//programs' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//contact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//impact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//programs' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+2_app-a53980883d5229d0.js:16 onClick is deprecated, please use onPress
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this warning
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+/graphql:1 
+            
+            
+           Failed to load resource: net::ERR_CONNECTION_CLOSEDUnderstand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//programs' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//impact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//contact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//impact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+2_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//impact' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+2_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+events.launchdarkly.com/events/bulk/62b35a865152ab14c5942820:1 
+            
+            
+           Failed to load resource: net::ERR_FAILEDUnderstand this error
+/graphql:1 
+            
+            
+           Failed to load resource: net::ERR_FAILEDUnderstand this error
+WholeHealthWebsite:1 Uncaught (in promise) TimeoutUnderstand this error
+workspace_iframe.html:32 Unrecognized feature: 'ambient-light-sensor'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'ambient-light-sensor'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'battery'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'battery'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'execution-while-not-rendered'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'execution-while-not-rendered'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'execution-while-out-of-viewport'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'execution-while-out-of-viewport'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'layout-animations'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'layout-animations'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'legacy-image-formats'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'legacy-image-formats'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'navigation-override'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'navigation-override'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'oversized-images'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'oversized-images'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'publickey-credentials'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'publickey-credentials'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'speaker-selection'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'speaker-selection'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'unoptimized-images'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'unoptimized-images'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'unsized-media'.Understand this warning
+workspace_iframe.html:32 Unrecognized feature: 'unsized-media'.Understand this warning
+workspace_iframe.html:32 Allow attribute will take precedence over 'allowfullscreen'.Understand this warning
+workspace_iframe.html:32 Allow attribute will take precedence over 'allowfullscreen'.Understand this warning
+workspace_iframe.html:32 Allow attribute will take precedence over 'allowpaymentrequest'.Understand this warning
+workspace_iframe.html:32 Allow attribute will take precedence over 'allowpaymentrequest'.Understand this warning
+2_app-a53980883d5229d0.js:16 Invalid href 'https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev//' passed to next/router in page: '/replEnvironmentDesktop'. Repeated forward-slashes (//) or backslashes \ are not valid in the href.
+push.31911.e8 @ _app-a53980883d5229d0.js:16Understand this error
+ Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
+    at a
+    at a
+    at https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=595c705f:337:18
+    at div
+    at header
+    at Header (https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/src/components/layout/Header.tsx:29:22)
+    at div
+    at Router
+    at QueryClientProvider (https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=595c705f:2805:3)
+    at App
+Mt.forEach.n.<computed> @ eruda.js:2Understand this error
+Console.js:61 Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
+    at a
+    at a
+    at https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=595c705f:337:18
+    at div
+    at header
+    at Header (https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/src/components/layout/Header.tsx:29:22)
+    at div
+    at Router
+    at QueryClientProvider (https://e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=595c705f:2805:3)
+    at App
+Mt.forEach.n.<computed> @ Console.js:61Understand this error
+e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/api/newsletter/subscribe:1 
+            
+            
+           Failed to load resource: the server responded with a status of 400 (Bad Request)Understand this error
+e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/api/newsletter/subscribe:1 
+            
+            
+           Failed to load resource: the server responded with a status of 400 (Bad Request)Understand this error
+e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/api/newsletter/subscribe:1 
+            
+            
+           Failed to load resource: the server responded with a status of 400 (Bad Request)Understand this error
+e805ff57-cc59-4cfe-b4de-8180d8fa4f86-00-3rupx2gmnsvdt.picard.replit.dev/api/newsletter/subscribe:1 
+            
+            
+           Failed to load resource: the server responded with a status of 400 (Bad Request)Understand this error
+
+                
+          
+          
+          
+         Chrome is moving towards a new experience that allows users to choose to browse without third-party cookies.Understand this warning

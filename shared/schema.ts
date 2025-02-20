@@ -70,7 +70,9 @@ export const updateActivitySchema = insertActivitySchema.partial();
 
 export const insertNewsletterSchema = createInsertSchema(newsletterSubscriptions).extend({
   email: z.string().email("Please enter a valid email address"),
-  name: z.string().optional()
+  name: z.string().optional().nullable(), 
+  status: z.string().optional(), 
+  subscribedAt: z.string().optional() 
 });
 
 export type InsertVolunteer = z.infer<typeof insertVolunteerSchema>;
