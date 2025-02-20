@@ -1,5 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+import { eq } from "drizzle-orm";
 import { 
   volunteers, contactMessages, newsUpdates, partners, activities,
   newsletterSubscriptions 
@@ -92,7 +93,7 @@ export class PostgresStorage implements IStorage {
   async getActivity(id: number): Promise<Activity | undefined> {
     const [activity] = await db.select()
       .from(activities)
-      .where(activities.id.equals(id));
+      .where(eq(activities.id, id));
     return activity;
   }
 
@@ -106,7 +107,12 @@ export class PostgresStorage implements IStorage {
   // Newsletter Subscriptions
   async createNewsletterSubscription(insertSubscription: InsertNewsletter): Promise<Newsletter> {
     const [subscription] = await db.insert(newsletterSubscriptions)
-      .values(insertSubscription)
+      .values({
+        email: insertSubscription.email,
+        name: insertSubscription.name ?? null,
+        status: insertSubscription.status ?? 'active',
+        subscribedAt: new Date().toISOString()
+      })
       .returning();
     return subscription;
   }
@@ -114,7 +120,7 @@ export class PostgresStorage implements IStorage {
   async getNewsletterSubscription(email: string): Promise<Newsletter | undefined> {
     const [subscription] = await db.select()
       .from(newsletterSubscriptions)
-      .where(newsletterSubscriptions.email.equals(email));
+      .where(eq(newsletterSubscriptions.email, email));
     return subscription;
   }
 }

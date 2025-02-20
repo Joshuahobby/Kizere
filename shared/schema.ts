@@ -1,14 +1,25 @@
-import { pgTable, text, serial, varchar, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, varchar, timestamp, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+// Extend volunteer table with authentication and profile fields
 export const volunteers = pgTable("volunteers", {
   id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  password: text("password").notNull(),
   name: text("name").notNull(),
-  email: text("email").notNull(),
   phone: varchar("phone", { length: 20 }).notNull(),
   interests: text("interests").notNull(),
   experience: text("experience").notNull(),
+  status: text("status").notNull().default('active'),
+  role: text("role").notNull().default('volunteer'),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  lastLoginAt: timestamp("last_login_at"),
+  profileImage: text("profile_image"),
+  bio: text("bio"),
+  skills: text("skills").array(),
+  availableHours: text("available_hours"),
+  totalHours: serial("total_hours").default(0),
 });
 
 export const contactMessages = pgTable("contact_messages", {
@@ -50,10 +61,20 @@ export const newsletterSubscriptions = pgTable("newsletter_subscriptions", {
   status: text("status").notNull().default('active'),
 });
 
-export const insertVolunteerSchema = createInsertSchema(volunteers).extend({
-  email: z.string().email(),
-  phone: z.string().min(10).max(20)
-});
+export const insertVolunteerSchema = createInsertSchema(volunteers, {
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 characters").max(20),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+  status: z.string().optional(),
+  role: z.string().optional(),
+  createdAt: z.date().optional(),
+  lastLoginAt: z.date().optional(),
+  profileImage: z.string().optional(),
+  bio: z.string().optional(),
+  skills: z.array(z.string()).optional(),
+  availableHours: z.string().optional(),
+  totalHours: z.number().optional()
+}).omit({ id: true });
 
 export const insertContactSchema = createInsertSchema(contactMessages).extend({
   email: z.string().email()
