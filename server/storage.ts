@@ -1,14 +1,16 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { 
-  volunteers, contactMessages, newsUpdates, partners, activities 
+  volunteers, contactMessages, newsUpdates, partners, activities,
+  newsletterSubscriptions 
 } from "@shared/schema";
 import type { 
   InsertVolunteer, Volunteer, 
   InsertContact, Contact,
   InsertNews, News,
   InsertPartner, Partner,
-  InsertActivity, Activity
+  InsertActivity, Activity,
+  InsertNewsletter, Newsletter
 } from "@shared/schema";
 
 const client = postgres(process.env.DATABASE_URL!);
@@ -33,6 +35,10 @@ export interface IStorage {
   getAllActivities(): Promise<Activity[]>;
   getActivity(id: number): Promise<Activity | undefined>;
   createActivity(activity: InsertActivity): Promise<Activity>;
+
+  // Newsletter Subscriptions
+  createNewsletterSubscription(subscription: InsertNewsletter): Promise<Newsletter>;
+  getNewsletterSubscription(email: string): Promise<Newsletter | undefined>;
 }
 
 export class PostgresStorage implements IStorage {
@@ -95,6 +101,21 @@ export class PostgresStorage implements IStorage {
       .values(insertActivity)
       .returning();
     return activity;
+  }
+
+  // Newsletter Subscriptions
+  async createNewsletterSubscription(insertSubscription: InsertNewsletter): Promise<Newsletter> {
+    const [subscription] = await db.insert(newsletterSubscriptions)
+      .values(insertSubscription)
+      .returning();
+    return subscription;
+  }
+
+  async getNewsletterSubscription(email: string): Promise<Newsletter | undefined> {
+    const [subscription] = await db.select()
+      .from(newsletterSubscriptions)
+      .where(newsletterSubscriptions.email.equals(email));
+    return subscription;
   }
 }
 

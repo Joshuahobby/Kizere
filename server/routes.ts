@@ -3,7 +3,8 @@ import { createServer } from "http";
 import { storage } from "./storage";
 import { 
   insertVolunteerSchema, insertContactSchema,
-  insertNewsSchema, insertPartnerSchema, insertActivitySchema
+  insertNewsSchema, insertPartnerSchema, insertActivitySchema,
+  insertNewsletterSchema // Added import
 } from "@shared/schema";
 
 export async function registerRoutes(app: Express) {
@@ -96,6 +97,26 @@ export async function registerRoutes(app: Express) {
       const data = insertActivitySchema.parse(req.body);
       const activity = await storage.createActivity(data);
       res.json(activity);
+    } catch (error) {
+      res.status(400).json({ message: "Invalid request data" });
+    }
+  });
+
+  // Newsletter subscription endpoint
+  app.post("/api/newsletter/subscribe", async (req, res) => {
+    try {
+      const data = insertNewsletterSchema.parse(req.body);
+
+      // Check if already subscribed
+      const existing = await storage.getNewsletterSubscription(data.email);
+      if (existing) {
+        return res.status(400).json({ 
+          message: "This email is already subscribed to our newsletter" 
+        });
+      }
+
+      const subscription = await storage.createNewsletterSubscription(data);
+      res.json(subscription);
     } catch (error) {
       res.status(400).json({ message: "Invalid request data" });
     }

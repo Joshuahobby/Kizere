@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Separator } from "@/components/ui/separator";
+import Newsletter from "./Newsletter";
 
 export default function Footer() {
   return (
@@ -13,7 +14,7 @@ export default function Footer() {
               and outcomes for communities worldwide.
             </p>
           </div>
-          
+
           <div>
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -22,7 +23,7 @@ export default function Footer() {
               <li><Link href="/contact">Get Involved</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
@@ -31,17 +32,14 @@ export default function Footer() {
               <li>Address: 123 Health Street</li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="font-semibold text-lg mb-4">Social</h3>
-            <div className="flex space-x-4">
-              {/* Add social media icons/links here */}
-            </div>
+            <Newsletter />
           </div>
         </div>
-        
+
         <Separator className="my-8" />
-        
+
         <div className="text-center text-sm text-muted-foreground">
           © 2024 WHOLEhealth Organization. All rights reserved.
         </div>

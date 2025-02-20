@@ -42,30 +42,37 @@ export const activities = pgTable("activities", {
   date: timestamp("date").defaultNow().notNull(),
 });
 
-// Volunteer schemas
+export const newsletterSubscriptions = pgTable("newsletter_subscriptions", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull(),
+  name: text("name"),
+  subscribedAt: timestamp("subscribed_at").defaultNow().notNull(),
+  status: text("status").notNull().default('active'),
+});
+
 export const insertVolunteerSchema = createInsertSchema(volunteers).extend({
   email: z.string().email(),
   phone: z.string().min(10).max(20)
 });
 
-// Contact schemas
 export const insertContactSchema = createInsertSchema(contactMessages).extend({
   email: z.string().email()
 });
 
-// News schemas
 export const insertNewsSchema = createInsertSchema(newsUpdates);
 export const updateNewsSchema = insertNewsSchema.partial();
 
-// Partner schemas
 export const insertPartnerSchema = createInsertSchema(partners);
 export const updatePartnerSchema = insertPartnerSchema.partial();
 
-// Activity schemas
 export const insertActivitySchema = createInsertSchema(activities);
 export const updateActivitySchema = insertActivitySchema.partial();
 
-// Types
+export const insertNewsletterSchema = createInsertSchema(newsletterSubscriptions).extend({
+  email: z.string().email("Please enter a valid email address"),
+  name: z.string().optional()
+});
+
 export type InsertVolunteer = z.infer<typeof insertVolunteerSchema>;
 export type Volunteer = typeof volunteers.$inferSelect;
 
@@ -80,3 +87,6 @@ export type Partner = typeof partners.$inferSelect;
 
 export type InsertActivity = z.infer<typeof insertActivitySchema>;
 export type Activity = typeof activities.$inferSelect;
+
+export type InsertNewsletter = z.infer<typeof insertNewsletterSchema>;
+export type Newsletter = typeof newsletterSubscriptions.$inferSelect;
