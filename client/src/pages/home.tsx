@@ -1,13 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import type { News, Partner, Activity } from "@shared/schema";
 
 export default function Home() {
+  const { data: news } = useQuery<News[]>({ 
+    queryKey: ["/api/news"]
+  });
+
+  const { data: partners } = useQuery<Partner[]>({ 
+    queryKey: ["/api/partners"]
+  });
+
+  const { data: activities } = useQuery<Activity[]>({ 
+    queryKey: ["/api/activities"]
+  });
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-20 bg-primary text-primary-foreground">
+      <section className="relative py-20 bg-[#24676f] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl">
             <motion.h1 
@@ -27,7 +41,7 @@ export default function Home() {
               Join us in our mission to provide accessible, quality healthcare to communities worldwide.
             </motion.p>
             <Link href="/contact">
-              <Button size="lg" variant="secondary">
+              <Button size="lg" className="bg-[#fc7025] hover:bg-[#e65b15]">
                 Get Involved
               </Button>
             </Link>
@@ -35,28 +49,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* News & Updates Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1516841273335-e39b37888115"
-                alt="Healthcare professional"
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-              <p className="text-lg mb-6">
-                WHOLEhealth Organization is committed to breaking down barriers to healthcare access
-                and promoting wellness in underserved communities through innovative programs and
-                partnerships.
-              </p>
-              <Link href="/programs">
-                <Button>Learn More About Our Programs</Button>
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#24676f]">Latest News & Updates</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {news?.slice(0, 3).map((item) => (
+              <Card key={item.id} className="hover:shadow-lg transition-shadow">
+                {item.imageUrl && (
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.title}
+                    className="w-full h-48 object-cover rounded-t-lg"
+                  />
+                )}
+                <CardHeader>
+                  <CardTitle className="text-[#24676f]">{item.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    {new Date(item.publishedAt).toLocaleDateString()}
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <p className="line-clamp-3">{item.content}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Activities Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#24676f]">Our Recent Impact</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {activities?.slice(0, 3).map((activity) => (
+              <Link key={activity.id} href={`/impact/${activity.id}`}>
+                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+                  {activity.imageUrl && (
+                    <img 
+                      src={activity.imageUrl} 
+                      alt={activity.title}
+                      className="w-full h-48 object-cover rounded-t-lg"
+                    />
+                  )}
+                  <CardHeader>
+                    <CardTitle className="text-[#24676f]">{activity.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="line-clamp-3">{activity.description}</p>
+                  </CardContent>
+                </Card>
               </Link>
-            </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/impact">
+              <Button className="bg-[#fc7025] hover:bg-[#e65b15]">
+                View All Impact Stories
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#24676f]">Our Partners</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+            {partners?.map((partner) => (
+              <a
+                key={partner.id}
+                href={partner.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:opacity-80 transition-opacity"
+              >
+                <img
+                  src={partner.logoUrl}
+                  alt={partner.name}
+                  className="h-16 w-auto mx-auto object-contain"
+                />
+              </a>
+            ))}
           </div>
         </div>
       </section>
