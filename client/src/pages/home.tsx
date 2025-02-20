@@ -50,7 +50,7 @@ export default function Home() {
     <div>
       {/* Hero Section with Slideshow */}
       <section className="relative">
-        <Carousel className="w-full" opts={{ loop: true }}>
+        <Carousel className="w-full" opts={{ loop: true, duration: 5000, autoplay: true }}>
           <CarouselContent>
             {heroSlides.map((slide, index) => (
               <CarouselItem key={index}>
@@ -189,6 +189,35 @@ export default function Home() {
                   className="h-16 w-auto mx-auto object-contain"
                 />
               </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* News & Updates Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#24676f]">Latest News & Updates</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {news?.slice(0, 3).map((item) => (
+              <Card key={item.id} className="hover:shadow-lg transition-shadow">
+                {item.imageUrl && (
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.title}
+                    className="w-full h-48 object-cover rounded-t-lg"
+                  />
+                )}
+                <CardHeader>
+                  <CardTitle className="text-[#24676f]">{item.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    {new Date(item.publishedAt).toLocaleDateString()}
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <p className="line-clamp-3">{item.content}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
