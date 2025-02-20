@@ -20,6 +20,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/programs">Our Programs</Link></li>
               <li><Link href="/impact">Our Impact</Link></li>
+              <li><Link href="/events">Events Calendar</Link></li>
               <li><Link href="/contact">Get Involved</Link></li>
             </ul>
           </div>

@@ -3,7 +3,7 @@ import postgres from "postgres";
 import { eq } from "drizzle-orm";
 import { 
   volunteers, contactMessages, newsUpdates, partners, activities,
-  newsletterSubscriptions 
+  newsletterSubscriptions, events
 } from "@shared/schema";
 import type { 
   InsertVolunteer, Volunteer, 
@@ -11,7 +11,8 @@ import type {
   InsertNews, News,
   InsertPartner, Partner,
   InsertActivity, Activity,
-  InsertNewsletter, Newsletter
+  InsertNewsletter, Newsletter,
+  InsertEvent, Event
 } from "@shared/schema";
 
 const client = postgres(process.env.DATABASE_URL!);
@@ -40,6 +41,13 @@ export interface IStorage {
   // Newsletter Subscriptions
   createNewsletterSubscription(subscription: InsertNewsletter): Promise<Newsletter>;
   getNewsletterSubscription(email: string): Promise<Newsletter | undefined>;
+
+  // Events
+  getAllEvents(): Promise<Event[]>;
+  getUpcomingEvents(): Promise<Event[]>;
+  getEvent(id: number): Promise<Event | undefined>;
+  createEvent(event: InsertEvent): Promise<Event>;
+  updateEventParticipants(id: number, increment: boolean): Promise<Event>;
 }
 
 export class PostgresStorage implements IStorage {
@@ -122,6 +130,53 @@ export class PostgresStorage implements IStorage {
       .from(newsletterSubscriptions)
       .where(eq(newsletterSubscriptions.email, email));
     return subscription;
+  }
+
+  // Events
+  async getAllEvents(): Promise<Event[]> {
+    return await db.select()
+      .from(events)
+      .orderBy(events.startDate);
+  }
+
+  async getUpcomingEvents(): Promise<Event[]> {
+    return await db.select()
+      .from(events)
+      .where(eq(events.status, 'upcoming'))
+      .orderBy(events.startDate);
+  }
+
+  async getEvent(id: number): Promise<Event | undefined> {
+    const [event] = await db.select()
+      .from(events)
+      .where(eq(events.id, id));
+    return event;
+  }
+
+  async createEvent(insertEvent: InsertEvent): Promise<Event> {
+    const [event] = await db.insert(events)
+      .values(insertEvent)
+      .returning();
+    return event;
+  }
+
+  async updateEventParticipants(id: number, increment: boolean): Promise<Event> {
+    const [event] = await db
+      .update(events)
+      .set({
+        currentParticipants: db.raw(
+          `CASE 
+            WHEN ${increment} AND current_participants < max_participants 
+            THEN current_participants + 1 
+            WHEN NOT ${increment} AND current_participants > 0 
+            THEN current_participants - 1 
+            ELSE current_participants 
+           END`
+        )
+      })
+      .where(eq(events.id, id))
+      .returning();
+    return event;
   }
 }
 

@@ -61,6 +61,21 @@ export const newsletterSubscriptions = pgTable("newsletter_subscriptions", {
   status: text("status").notNull().default('active'),
 });
 
+export const events = pgTable("events", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  eventType: text("event_type").notNull(),
+  startDate: timestamp("start_date").notNull(),
+  endDate: timestamp("end_date").notNull(),
+  location: text("location").notNull(),
+  maxParticipants: serial("max_participants").notNull(),
+  currentParticipants: serial("current_participants").default(0),
+  status: text("status").notNull().default('upcoming'),
+  imageUrl: text("image_url"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const insertVolunteerSchema = createInsertSchema(volunteers, {
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 characters").max(20),
@@ -96,6 +111,15 @@ export const insertNewsletterSchema = createInsertSchema(newsletterSubscriptions
   subscribedAt: z.string().optional() 
 });
 
+export const insertEventSchema = createInsertSchema(events, {
+  eventType: z.enum(['health_camp', 'workshop', 'community_program', 'other']),
+  startDate: z.string().transform(str => new Date(str)),
+  endDate: z.string().transform(str => new Date(str)),
+  maxParticipants: z.number().min(1),
+  status: z.enum(['upcoming', 'ongoing', 'completed', 'cancelled']).optional(),
+  imageUrl: z.string().url().optional(),
+}).omit({ id: true, currentParticipants: true, createdAt: true });
+
 export type InsertVolunteer = z.infer<typeof insertVolunteerSchema>;
 export type Volunteer = typeof volunteers.$inferSelect;
 
@@ -113,3 +137,6 @@ export type Activity = typeof activities.$inferSelect;
 
 export type InsertNewsletter = z.infer<typeof insertNewsletterSchema>;
 export type Newsletter = typeof newsletterSubscriptions.$inferSelect;
+
+export type InsertEvent = z.infer<typeof insertEventSchema>;
+export type Event = typeof events.$inferSelect;

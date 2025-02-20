@@ -10,6 +10,7 @@ import Programs from "@/pages/programs";
 import Impact from "@/pages/impact";
 import Contact from "@/pages/contact";
 import ThankYou from "@/pages/thank-you";
+import Events from "@/pages/events";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
           <Route path="/impact" component={Impact} />
           <Route path="/contact" component={Contact} />
           <Route path="/thank-you" component={ThankYou} />
+          <Route path="/events" component={Events} />
           <Route component={NotFound} />
         </Switch>
       </main>

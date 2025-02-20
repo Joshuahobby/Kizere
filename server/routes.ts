@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { 
   insertVolunteerSchema, insertContactSchema,
   insertNewsSchema, insertPartnerSchema, insertActivitySchema,
-  insertNewsletterSchema // Added import
+  insertNewsletterSchema, insertEventSchema
 } from "@shared/schema";
 
 export async function registerRoutes(app: Express) {
@@ -119,6 +119,59 @@ export async function registerRoutes(app: Express) {
       res.json(subscription);
     } catch (error) {
       res.status(400).json({ message: "Invalid request data" });
+    }
+  });
+
+  // Events endpoints
+  app.get("/api/events", async (req, res) => {
+    try {
+      const events = await storage.getAllEvents();
+      res.json(events);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch events" });
+    }
+  });
+
+  app.get("/api/events/upcoming", async (req, res) => {
+    try {
+      const events = await storage.getUpcomingEvents();
+      res.json(events);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch upcoming events" });
+    }
+  });
+
+  app.get("/api/events/:id", async (req, res) => {
+    try {
+      const event = await storage.getEvent(Number(req.params.id));
+      if (!event) {
+        return res.status(404).json({ message: "Event not found" });
+      }
+      res.json(event);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch event" });
+    }
+  });
+
+  app.post("/api/events", async (req, res) => {
+    try {
+      const data = insertEventSchema.parse(req.body);
+      const event = await storage.createEvent(data);
+      res.json(event);
+    } catch (error) {
+      res.status(400).json({ message: "Invalid request data" });
+    }
+  });
+
+  app.post("/api/events/:id/register", async (req, res) => {
+    try {
+      const event = await storage.updateEventParticipants(Number(req.params.id), true);
+      if (!event) {
+        return res.status(404).json({ message: "Event not found" });
+      }
+      res.json(event);
+    } catch (error) {
+      res.status(400).json({ message: "Failed to register for event" });
     }
   });
 
