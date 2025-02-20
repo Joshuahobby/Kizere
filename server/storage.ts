@@ -1,39 +1,30 @@
-import { users, type User, type InsertUser } from "@shared/schema";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
+import { volunteers, contactMessages } from "@shared/schema";
+import type { InsertVolunteer, Volunteer, InsertContact, Contact } from "@shared/schema";
 
-// modify the interface with any CRUD methods
-// you might need
+const client = postgres(process.env.DATABASE_URL!);
+const db = drizzle(client);
 
 export interface IStorage {
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  createVolunteer(volunteer: InsertVolunteer): Promise<Volunteer>;
+  createContactMessage(message: InsertContact): Promise<Contact>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  currentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.currentId = 1;
+export class PostgresStorage implements IStorage {
+  async createVolunteer(insertVolunteer: InsertVolunteer): Promise<Volunteer> {
+    const [volunteer] = await db.insert(volunteers)
+      .values(insertVolunteer)
+      .returning();
+    return volunteer;
   }
 
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async createContactMessage(insertMessage: InsertContact): Promise<Contact> {
+    const [message] = await db.insert(contactMessages)
+      .values(insertMessage)
+      .returning();
+    return message;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new PostgresStorage();
