@@ -1,16 +1,13 @@
-
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
-export default function Header() {
+export function Header() {
   return (
     <header className="border-b">
       <div className="container flex items-center justify-between py-4">
         <div className="flex items-center gap-8">
           <Link href="/">
-            <Button variant="ghost" className="p-0">
-              <img src="/logo.png" alt="Logo" className="h-8" />
-            </Button>
+            <img src="/logo.png" alt="Logo" className="h-8" />
           </Link>
           <nav className="flex items-center gap-4">
             <Link href="/about">
