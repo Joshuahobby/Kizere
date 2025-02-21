@@ -15,6 +15,7 @@ import NotFound from "@/pages/not-found";
 import AdminRoute from "@/components/auth/AdminRoute";
 import AdminDashboard from "@/pages/admin/dashboard";
 import Login from "@/pages/login";
+import Register from "@/pages/register"; // Import the Register component
 
 function Router() {
   return (
@@ -30,6 +31,7 @@ function Router() {
           <Route path="/thank-you" component={ThankYou} />
           <Route path="/events" component={Events} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} /> {/* Added Register route */}
           <AdminRoute path="/admin">
             <AdminDashboard />
           </AdminRoute>
