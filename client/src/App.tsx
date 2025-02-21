@@ -12,6 +12,8 @@ import Contact from "@/pages/contact";
 import ThankYou from "@/pages/thank-you";
 import Events from "@/pages/events";
 import NotFound from "@/pages/not-found";
+import AdminRoute from "@/components/auth/AdminRoute"; // Added import
+import AdminDashboard from "@/pages/admin/dashboard"; // Added import
 
 function Router() {
   return (
@@ -26,6 +28,11 @@ function Router() {
           <Route path="/contact" component={Contact} />
           <Route path="/thank-you" component={ThankYou} />
           <Route path="/events" component={Events} />
+          <Route path="/admin"> {/* Added admin route */}
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          </Route>
           <Route component={NotFound} />
         </Switch>
       </main>
