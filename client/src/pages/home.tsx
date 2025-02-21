@@ -50,50 +50,66 @@ export default function Home() {
     <div>
       {/* Hero Section with Slideshow */}
       <section className="relative">
-        <Carousel className="w-full" opts={{ loop: true, duration: 5000, autoplay: true }}>
-          <CarouselContent>
-            {heroSlides.map((slide, index) => (
-              <CarouselItem key={index}>
-                <div className="relative h-[600px]">
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className="w-full h-full object-cover brightness-50"
-                  />
-                  <div className="absolute inset-0 bg-black/30">
-                    <div className="container mx-auto px-4 h-full flex items-center">
-                      <div className="max-w-2xl text-white">
-                        <motion.h1 
-                          className="text-4xl md:text-6xl font-bold mb-6"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          {slide.title}
-                        </motion.h1>
-                        <motion.p 
-                          className="text-xl mb-8"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                          {slide.description}
-                        </motion.p>
-                        <Link href={slide.cta.link}>
-                          <Button size="lg" className="bg-[#fc7025] hover:bg-[#e65b15]">
-                            {slide.cta.text}
-                          </Button>
-                        </Link>
+        <div className="relative">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {heroSlides.map((slide, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative h-[600px]">
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-full h-full object-cover brightness-50"
+                    />
+                    <div className="absolute inset-0 bg-black/30">
+                      <div className="container mx-auto px-4 h-full flex items-center">
+                        <div className="max-w-2xl text-white">
+                          <motion.h1 
+                            className="text-4xl md:text-6xl font-bold mb-6"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            {slide.title}
+                          </motion.h1>
+                          <motion.p 
+                            className="text-xl mb-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                          >
+                            {slide.description}
+                          </motion.p>
+                          <Link href={slide.cta.link}>
+                            <Button size="lg" className="bg-[#fc7025] hover:bg-[#e65b15]">
+                              {slide.cta.text}
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
-        </Carousel>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4" />
+            <CarouselNext className="right-4" />
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+              {heroSlides.map((_, index) => (
+                <button
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors"
+                  onClick={() => {
+                    const carousel = document.querySelector('[role="region"]');
+                    if (carousel) {
+                      carousel.scrollLeft = (carousel.scrollWidth / heroSlides.length) * index;
+                    }
+                  }}
+                />
+              ))}
+            </div>
+          </Carousel>
+        </div>
       </section>
 
       {/* About Section */}

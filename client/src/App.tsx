@@ -22,6 +22,7 @@ function Router() {
           <Route path="/" component={Home} />
           <Route path="/programs" component={Programs} />
           <Route path="/impact" component={Impact} />
+          <Route path="/impact/:id" component={() => import("@/pages/impact/[id]")} />
           <Route path="/contact" component={Contact} />
           <Route path="/thank-you" component={ThankYou} />
           <Route path="/events" component={Events} />
