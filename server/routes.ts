@@ -8,6 +8,19 @@ import {
 } from "@shared/schema";
 
 export async function registerRoutes(app: Express) {
+  // Auth endpoints
+  app.post("/api/auth/login", async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const user = await storage.authenticateUser(email, password);
+      if (!user) {
+        return res.status(401).json({ message: "Invalid credentials" });
+      }
+      res.json(user);
+    } catch (error) {
+      res.status(500).json({ message: "Authentication failed" });
+    }
+  });
   // Volunteer signup endpoint
   app.post("/api/volunteers", async (req, res) => {
     try {
